@@ -1,0 +1,11 @@
+<resultadoKinect>
+	<nombre_juego>JUEGO1</nombre_juego>
+	<id_paciente>5</id_paciente>
+	<id_especialista>5</id_especialista>
+	<fecha>14/04/2019</fecha>
+	<hora>12:12</hora>
+	<duracion>20</duracion>
+	<aciertos>16</aciertos>
+	<fallos>2</fallos>
+	<puntuacion>7</puntuacion>
+</resultadoKinect>

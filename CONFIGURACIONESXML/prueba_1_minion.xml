@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<motriKinect>
+	<nombre>prueba_1_minion</nombre>
+	<descripcion>Fichero de prueba de procesamiento del XML</descripcion>
+	<duracion>40</duracion>
+	<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/minions.jpg</fondo>
+	<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/prueba_1_minion/</directorio_resultados>
+	<especialista>1</especialista>
+	<objetos>
+		<elemento>
+			<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_ANIMALES/pez.jpg</imagen>
+			<tiempo>4</tiempo>
+			<orden>1</orden>
+			<posicionX>52</posicionX>
+			<posicionY>60</posicionY>
+			<color>255,153,51</color>
+		</elemento>
+		<elemento>
+			<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_ANIMALES/perro.jpg</imagen>
+			<tiempo>10</tiempo>
+			<orden>2</orden>
+			<posicionX>31</posicionX>
+			<posicionY>303</posicionY>
+			<color>153,153,0</color>
+		</elemento>
+		<elemento>
+			<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_ANIMALES/jirafa.jpg</imagen>
+			<tiempo>8</tiempo>
+			<orden>3</orden>
+			<posicionX>815</posicionX>
+			<posicionY>55</posicionY>
+			<color>255,255,153</color>
+		</elemento>
+		<elemento>
+			<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_ANIMALES/oveja.jpg</imagen>
+			<tiempo>2</tiempo>
+			<orden>4</orden>
+			<posicionX>809</posicionX>
+			<posicionY>435</posicionY>
+			<color>102,102,102</color>
+		</elemento>
+	</objetos>
+</motriKinect>

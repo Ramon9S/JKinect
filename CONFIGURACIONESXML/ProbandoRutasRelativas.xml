@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<motriKinect>
+<nombre>ProbandoRutasRelativas</nombre>
+<descripcion>asfasfSADF</descripcion>
+<duracion>30</duracion>
+<fondo>images/Logos/FONDOS_PANTALLA/disney.jpg</fondo>
+<especialista>-1111</especialista>
+<objetos>
+<elemento>
+<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/sierra.jpg</imagen>
+<tiempo>1</tiempo>
+<orden>1</orden>
+<posicionX>149</posicionX>
+<posicionY>63</posicionY>
+<color>102,255,0</color>
+</elemento>
+</objetos>
+</motriKinect>
