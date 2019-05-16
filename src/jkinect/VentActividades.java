@@ -79,7 +79,6 @@ public class VentActividades extends JInternalFrame {
 		super("Ventana de Actividades", true, true, true, true);
 
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
 		
 		String path = j.globalXML;
 
@@ -204,7 +203,7 @@ public class VentActividades extends JInternalFrame {
 
 				if(!list.isSelectionEmpty())
 				{
-					fichero = new File(path+(list.getSelectedValue()).trim()+"/"+(list.getSelectedValue()).trim());
+					fichero = new File((list.getSelectedValue()).trim());
 				}
 
 
@@ -295,19 +294,17 @@ public class VentActividades extends JInternalFrame {
 	public void rellenarListas(String path, JKinect j){
 
 		File fer = new File(path);
-		//XMLFileFilter xmlFilter = new XMLFileFilter();
 		File[] listOfFiles = fer.listFiles();
 
 		for(int i = 0; i < listOfFiles.length; i++)
 		{
-			if( !listOfFiles[i].isHidden() )
+			if( !listOfFiles[i].isHidden() && listOfFiles[i].getName().endsWith(".xml") && !listOfFiles[i].getName().startsWith(".") )
 			{
 				dlm.addElement("\t\t\t\t"+listOfFiles[i].toString());
 			}//end if subFichero != null
 		}//end for i
 		
 		ordenarModelo(dlm);
-		//ordenarModelo(dlm2);
 	}//end rellenarLista()
 
 	public void ordenarModelo(DefaultListModel<String> modelo) {

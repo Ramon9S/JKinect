@@ -562,8 +562,8 @@ public class VentActividades2 extends JInternalFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int exito = -1;
-				String resultados = j.globalXML;
-				xml = new ManejadorXML(textFieldNombre.getText(), textFieldDescrip.getText(), Integer.parseInt(textFieldDuracion.getText()), fichero, new File(resultados), j.idRegistrado, obj, j);
+				//String resultados = j.globalXML;
+				xml = new ManejadorXML(textFieldNombre.getText(), textFieldDescrip.getText(), Integer.parseInt(textFieldDuracion.getText()), new File("images/"+fichero.toString().split("/images")[1]), j.idRegistrado, obj, j);
 				exito = xml.generarXML(j);
 
 				// Si se ha creado el fichero XML sin problema cerramos la ventana
@@ -611,7 +611,8 @@ public class VentActividades2 extends JInternalFrame {
 
 			System.out.println(directorio.toString());
 			File fichero3 = new File(directorio.toString(), (String)comboBox.getSelectedItem());
-
+			//File fichero3 = new File((String)comboBox.getSelectedItem());
+			
 			BufferedImage imgb = null;
 			try {
 				imgb = ImageIO.read(fichero3);

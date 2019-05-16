@@ -43,7 +43,7 @@ public class VentConfiguracion extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			dialog = new VentRegistro(null);
+			dialog = new VentRegistro(null, null);
 			dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {

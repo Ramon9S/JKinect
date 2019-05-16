@@ -321,7 +321,7 @@ public class VentVideos extends JInternalFrame {
 			{
 				for(int k = 0 ; k < subFichero.length; k++)
 				{
-					if(subFichero[k].getName().equals("videos"))
+					if( !subFichero[k].getName().startsWith(".") && subFichero[k].getName().equals("videos") )
 					{
 						String[] subFichero2 = new String[1000];
 						subFichero2 = subFichero[k].list();
@@ -330,7 +330,7 @@ public class VentVideos extends JInternalFrame {
 						if(subFichero2 != null){	
 							for(int j = 0; j < subFichero2.length; j++)
 							{
-								if(!subFichero2[j].equals(".DS_Store"))
+								if( !subFichero2[j].startsWith(".") && !subFichero2[j].equals(".DS_Store") )
 								{
 									dlm.addElement(subFichero[k]+"/"+subFichero2[j]);
 								}//end if .DS_Store

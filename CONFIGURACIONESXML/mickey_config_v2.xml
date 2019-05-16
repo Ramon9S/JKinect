@@ -3,12 +3,11 @@
 <nombre>mickey_config_v2</nombre>
 <descripcion>Version 2 de configuracion de partida de mickey con juguetes</descripcion>
 <duracion>30</duracion>
-<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/mickey.jpg</fondo>
-<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/mickey_config_v2/</directorio_resultados>
+<fondo>images/Logos/FONDOS_PANTALLA/mickey.jpg</fondo>
 <especialista>1</especialista>
 <objetos>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_JUGUETES/caballoMadera.jpg</imagen>
+<imagen>images/Logos/FOTOS_JUGUETES/caballoMadera.jpg</imagen>
 <tiempo>3</tiempo>
 <orden>1</orden>
 <posicionX>21</posicionX>
@@ -16,7 +15,7 @@
 <color>153,102,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_JUGUETES/muñeca.jpg</imagen>
+<imagen>images/Logos/FOTOS_JUGUETES/muñeca.jpg</imagen>
 <tiempo>8</tiempo>
 <orden>2</orden>
 <posicionX>718</posicionX>
@@ -24,7 +23,7 @@
 <color>255,0,255</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_JUGUETES/muñeca.jpg</imagen>
+<imagen>images/Logos/FOTOS_JUGUETES/muñeca.jpg</imagen>
 <tiempo>2</tiempo>
 <orden>3</orden>
 <posicionX>46</posicionX>
@@ -32,7 +31,7 @@
 <color>255,0,255</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_JUGUETES/coche.jpg</imagen>
+<imagen>images/Logos/FOTOS_JUGUETES/coche.jpg</imagen>
 <tiempo>1</tiempo>
 <orden>4</orden>
 <posicionX>706</posicionX>
@@ -40,7 +39,7 @@
 <color>0,0,255</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_JUGUETES/coche.jpg</imagen>
+<imagen>images/Logos/FOTOS_JUGUETES/coche.jpg</imagen>
 <tiempo>3</tiempo>
 <orden>5</orden>
 <posicionX>184</posicionX>

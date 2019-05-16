@@ -23,11 +23,13 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
 import org.jfree.ui.ApplicationFrame;
 
+import bbdd.BaseDeDatosMySQL;
 import graficas.VentGraficas;
 import manejoXML.ManejadorXML;
 import video.DirectRendering;
@@ -52,12 +54,12 @@ public class JKinect extends JFrame{
 	public String globalResul 	= "RESULTADOS/";
 	public String globalExe 	= "EJECUTABLES/Kinect.exe";
 
-	
+
 	// REGISTRO
-	private JLabel reg		= null;
+	private JLabel reg = null;
 	Boolean registrado = false;						// Variable que indica si hay algun usuario registrado en el sistema
-	String usuarioReg = null;						// Variable que indica que usuario está registrado en el sistema
-	public enum TipoUsuario{ ESPECIALISTA, PACIENTE, ADMIN} // ENUM de los tipos de usuarios
+	String usuarioReg  = null;						// Variable que indica que usuario está registrado en el sistema
+	public enum TipoUsuario{ ESPECIALISTA, PACIENTE, ADMIN, INVITADO } // ENUM de los tipos de usuarios
 	TipoUsuario tipoU = TipoUsuario.ADMIN;			// Variable que indica del tipo de usuario registrado
 	int idRegistrado = -1;							// Variable que indica el id de usuario registrado
 
@@ -120,8 +122,9 @@ public class JKinect extends JFrame{
 	public DirectRendering jframeVid2 = null; 				// Ventana para visualizar VIDEOS de RESULTADOS
 	public JInternalFrame jframeRes = null; 				// Ventana de la lista de RESULTADOS
 	public ArrayList<ApplicationFrame> jframeRes2 = null; 	// Ventana de las graficas de RESULTADOS
-	public VentJuego jframeLanzar;							// Ventana para lanzar el juego desde JKinect
-	
+	public VentJuego jframeLanzar = null;					// Ventana para lanzar el juego desde JKinect
+
+
 	// FLAGS para controlar las ventanas abiertas
 	public boolean espAbierto 	= false;		// Flag que indica si ya esta instanciado la ventana de especialistas
 	public boolean pacAbierto 	= false;		// Flag que indica si ya esta instanciado la ventana de pacientes
@@ -131,18 +134,23 @@ public class JKinect extends JFrame{
 	public boolean vidAbierto2 	= false;		// Flag que indica si ya esta instanciado la ventana de visualizar video
 	public boolean resAbierto 	= false;		// Flag que indica si ya esta instanciado la ventana de listar resultados
 	public boolean resAbierto2 	= false;		// Flag que indica si ya esta instanciado la ventana de ver resultados
-	
+
+
 	// MANEJADOR XML
 	public ManejadorXML xml = null;
+
 
 	// IMAGEN DE FONDO
 	public BufferedImage img = null;
 	public Image dimg;
 
+
 	// RUTAS RECURSOS IMAGENES
 	public String imgLogos 		= "images/Logos/";
-	public String imgLogosEPSG	= "images/Logos/Logo-EPS2.png";
-	public String imgLogosEPS	= "images/Logos/Logo-EPS3.png";
+	//public String imgLogosEPSG	= "images/Logos/Logo-EPS2.png";
+	//public String imgLogosEPS	= "images/Logos/Logo-EPS3.png";
+	public String imgLogosEPSG	= "images/Logos/JKinectBlack.png";
+	public String imgLogosEPS	= "images/Logos/JKinectBlack2.png";
 	public String imgLogosUCOG	= "images/Logos/uco_0.png";
 	public String imgLogosUCO	= "images/Logos/uco_3.png";
 	public String imgFondo 		= "images/Logos/fondoPantalla.png";
@@ -152,81 +160,8 @@ public class JKinect extends JFrame{
 	public String imgPaleta		= "images/Logos/paletaC.jpg";
 
 
-	/**
-	 * Create the application.
-	 */
-	public JKinect(){
-		initialize(this);
-
-	}//Constructor
-
-	public void setFinRegistro()
-	{
-		jframe.dispose();
-	}//finRegistro()
-
-	/**
-	 * Initialize the contents of the frame.
-	 * @param d 
-	 */
-	private void initialize(JKinect j) {
-
-
-		desktopPane = new JDesktopPane();  
-		Container contentPane = getContentPane();  
-		getContentPane().setLayout(new BorderLayout(0, 0));
-		desktopPane.setDoubleBuffered(true);
-		contentPane.add(desktopPane);
-
-		DesktopManager dm = null;
-		desktopPane.setDesktopManager(dm);
-
-
-		agregarMenu(j);
-		@SuppressWarnings("unused")
-		JInternalFrame registro = null;
-		registro = new JInternalFrame();
-
-		//agregarToolBar();
-
-
-		/*****/
-
-		jframe = new VentRegistro(j);
-		jframe.setModal(true);
-		jframe.setAlwaysOnTop(true);
-		jframe.setVisible(true);
-
-
-		//Add toolbar to the window.
-		//desktopPane.add(tdb.toolBar);
-
-
-		setTitle("JKinect");  
-		setExtendedState(Frame.MAXIMIZED_BOTH);   
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);  
-
-		InputStream foto1 = this.getClass().getResourceAsStream(j.imgFondo);
-		Fondo f = new Fondo(img);
-		f.cargarImagen(desktopPane, foto1);
-
-		if(registrado == false)
-		{
-			reg = new JLabel("NO hay ningun usuario registrado en el sistema");
-			//reg.setHorizontalAlignment(SwingConstants.CENTER);
-			reg.setBounds(1100, 30, 300, 20);
-			desktopPane.add(reg);
-		}
-		else
-		{
-			reg = new JLabel("USUARIO: " + usuarioReg);
-			reg.setBounds(1250, 20, 300, 20);
-			desktopPane.add(reg);
-			ajustarMenu();
-		}//if-else
-
-	}//initialize()
+	// BASE DE DATOS
+	BaseDeDatosMySQL db = null;
 
 
 	/**
@@ -247,6 +182,71 @@ public class JKinect extends JFrame{
 	}//main()
 
 
+	/**
+	 * Create the application.
+	 */
+	public JKinect(){
+
+		db = new BaseDeDatosMySQL();
+
+		initialize(this, db);
+
+	}//Constructor
+
+
+	private void initialize(JKinect j, BaseDeDatosMySQL db) {
+
+		desktopPane = new JDesktopPane();  
+		Container contentPane = getContentPane();  
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		desktopPane.setDoubleBuffered(true);
+		contentPane.add(desktopPane);
+		DesktopManager dm = null;
+		desktopPane.setDesktopManager(dm);
+
+
+		agregarMenu(j);
+
+
+		jframe = new VentRegistro(j, db);
+		jframe.setModal(true);
+		jframe.setAlwaysOnTop(true);
+		jframe.setTitle("JKinect");
+		jframe.setVisible(true);
+
+
+		setTitle("JKinect");  
+		setExtendedState(Frame.MAXIMIZED_BOTH);   
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);  
+
+		InputStream foto1 = this.getClass().getResourceAsStream(j.imgFondo);
+		Fondo f = new Fondo(img);
+		f.cargarImagen(desktopPane, foto1);
+
+
+		if(registrado == false)
+		{
+			reg = new JLabel("USUARIO: Invitado (no se encuentra registrado en el sistema)");
+			reg.setBounds(1100, 30, 300, 20);
+			desktopPane.add(reg);
+		}
+		else
+		{
+			reg = new JLabel("USUARIO: " + usuarioReg);
+			reg.setBounds(1250, 20, 300, 20);
+			desktopPane.add(reg);
+			ajustarMenu();
+		}//if-else
+
+	}//initialize()
+
+	public void setFinRegistro()
+	{
+		jframe.dispose();
+	}//finRegistro()
+
+
 	// MENU SUPERIOR DE LA INTERFAZ
 	public void agregarMenu(JKinect j){
 
@@ -265,7 +265,27 @@ public class JKinect extends JFrame{
 		salir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(DISPOSE_ON_CLOSE); 
+				Object[] options1 = {"SI",
+	                     "NO"};
+				
+				int result = JOptionPane.showOptionDialog(null,
+						"¿Seguro que desea salir de JKinect?",
+						"Salir de JKinect",
+		                 JOptionPane.YES_NO_OPTION,
+		                 JOptionPane.PLAIN_MESSAGE,
+		                 j.getIconoInfo(),
+		                 options1,
+		                 null);
+				
+				if(result == JOptionPane.YES_OPTION)
+				{
+					db.finBaseDeDatos();
+					System.exit(DISPOSE_ON_CLOSE);
+				}else if(result == JOptionPane.NO_OPTION)
+				{
+					
+				}
+				 
 			}
 		});
 		abrir		= new JMenuItem("Abrir");
@@ -275,10 +295,10 @@ public class JKinect extends JFrame{
 		config.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					jframeConfig = new VentConfiguracion(j);
-					jframeConfig.setModal(true);
-					jframeConfig.setAlwaysOnTop(true);
-					jframeConfig.setVisible(true);
+				jframeConfig = new VentConfiguracion(j);
+				jframeConfig.setModal(true);
+				jframeConfig.setAlwaysOnTop(true);
+				jframeConfig.setVisible(true);
 			}//actionPerformed()
 		});
 		espec		= new JMenuItem("Especialistas");
@@ -287,7 +307,7 @@ public class JKinect extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(espAbierto == false)
 				{
-					jframeEsp = new VentEspecialistas(j);
+					jframeEsp = new VentEspecialistas(j, db);
 					desktopPane.add(jframeEsp);
 					jframeEsp.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					jframeEsp.setVisible(true);
@@ -301,7 +321,7 @@ public class JKinect extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(pacAbierto == false)
 				{
-					jframePac = new VentPacientes(j);
+					jframePac = new VentPacientes(j, db);
 					desktopPane.add(jframePac);
 					jframePac.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					jframePac.setVisible(true);		
@@ -349,10 +369,10 @@ public class JKinect extends JFrame{
 		lanzar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					jframeLanzar = new VentJuego(j);
-					jframeLanzar.setModal(true);
-					jframeLanzar.setAlwaysOnTop(true);
-					jframeLanzar.setVisible(true);
+				jframeLanzar = new VentJuego(j, db);
+				jframeLanzar.setModal(true);
+				jframeLanzar.setAlwaysOnTop(true);
+				jframeLanzar.setVisible(true);
 			}//actionPerformed()
 		});
 		graficas	= new JMenuItem("Ver Graficas");
@@ -424,8 +444,25 @@ public class JKinect extends JFrame{
 
 	// AJUSTAR EL MENU SUPERIOR DE LA INTERFAZ EN FUNCION DEL TIPO DE USUARIO
 	public void ajustarMenu()
-	{
-		if(tipoU == TipoUsuario.ESPECIALISTA)
+	{		
+		if(tipoU == TipoUsuario.INVITADO)
+		{
+			abrir.setEnabled(false);
+			config.setEnabled(false);
+			guardar.setEnabled(false);
+			espec.setEnabled(false);
+			pacie.setEnabled(false);
+			admin.setEnabled(false);
+			listaT.setEnabled(false);
+			crearT.setEnabled(false);
+			lista.setEnabled(false);
+			crear.setEnabled(false);
+			listaS.setEnabled(false);
+			crearS.setEnabled(false);
+			graficas.setEnabled(false);
+			videos.setEnabled(false);
+			lanzar.setEnabled(false);
+		}else if(tipoU == TipoUsuario.ESPECIALISTA)
 		{
 			config.setEnabled(false);
 			guardar.setEnabled(false);
@@ -450,14 +487,6 @@ public class JKinect extends JFrame{
 		}//if -else
 	}//ajustarMenu()
 
-	/*
-// TOOLBAR SUPERIOR DE LA INTERFAZ
-public void agregarToolBar(){
-
-	tdb = new ToolBarDemo();
-
-}//agregarToolBar()
-	 */
 
 	public Icon getIconoInfo() {
 		return iconoInfo;

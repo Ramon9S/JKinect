@@ -37,8 +37,6 @@ public abstract class BaseDeDatos {
 	public void finBaseDeDatos()
 	{
 		try {
-			rset.close();
-			stmt.close();
 			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

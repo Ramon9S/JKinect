@@ -3,12 +3,11 @@
 <nombre>pruebaXML</nombre>
 <descripcion>ADASDAS</descripcion>
 <duracion>30</duracion>
-<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/madagascar.jpg</fondo>
-<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/pruebaXML/</directorio_resultados>
+<fondo>images/Logos/FONDOS_PANTALLA/madagascar.jpg</fondo>
 <especialista>1</especialista>
 <objetos>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
+<imagen>images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
 <tiempo>6</tiempo>
 <orden>1</orden>
 <posicionX>413</posicionX>
@@ -16,7 +15,7 @@
 <color>255,0,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
+<imagen>images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
 <tiempo>2</tiempo>
 <orden>2</orden>
 <posicionX>390</posicionX>
@@ -24,7 +23,7 @@
 <color>255,255,51</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
+<imagen>images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>1</orden>
 <posicionX>168</posicionX>
@@ -32,7 +31,7 @@
 <color>255,0,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
+<imagen>images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
 <tiempo>3</tiempo>
 <orden>2</orden>
 <posicionX>757</posicionX>
@@ -40,7 +39,7 @@
 <color>51,255,51</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/coco.jpg</imagen>
+<imagen>images/Logos/FOTOS_FRUTAS/coco.jpg</imagen>
 <tiempo>7</tiempo>
 <orden>3</orden>
 <posicionX>62</posicionX>

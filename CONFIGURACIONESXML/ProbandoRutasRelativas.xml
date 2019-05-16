@@ -7,7 +7,7 @@
 <especialista>-1111</especialista>
 <objetos>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/sierra.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/sierra.jpg</imagen>
 <tiempo>1</tiempo>
 <orden>1</orden>
 <posicionX>149</posicionX>

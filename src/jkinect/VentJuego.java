@@ -47,17 +47,14 @@ public class VentJuego extends JDialog {
 	private final JPanel panelExt = new JPanel();
 	private static VentRegistro dialog = null;
 
-	JList<String> list = null;
-	DefaultListModel<String> dlm = new DefaultListModel<String>();
-
 	private String xml = null;
 	private String exe = null;
 	private int especialista;
 	private int paciente;
-
 	private JTable tabla;
+	JList<String> list = null;
+	DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-	BaseDeDatosMySQL db = null;
 	Process proceso = null;
 
 
@@ -66,7 +63,7 @@ public class VentJuego extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			dialog = new VentRegistro(null);
+			dialog = new VentRegistro(null, null);
 			dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -76,12 +73,10 @@ public class VentJuego extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param db 
 	 */
-	public VentJuego(JKinect j) {
+	public VentJuego(JKinect j, BaseDeDatosMySQL db) {
 		super(j.jframeConfig, true);
-
-		// Creamos conexion con la BBDD
-		db = new BaseDeDatosMySQL();
 
 		// Establecemos los path necesarios para el ejecutable, los ficheros xml de configuracion y el especialista
 		exe = j.globalExe;

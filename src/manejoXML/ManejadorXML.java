@@ -24,7 +24,6 @@ public class ManejadorXML {
 	String descripcion;			// Breve descripcion de la actividad
 	Integer duracion;			// Duracion total de la actividad
 	File fondo;					// Imagen de fonde de pantalla de la actividad
-	File dirResultados;			// Ruta del directorio de los resultados de la actividad
 	Integer id_especialista;	// Identificador del especialista de la actividad
 	public ArrayList<Objetos> obj;		// ArrayList de objetos que componen la actividad
 
@@ -33,13 +32,12 @@ public class ManejadorXML {
 		super();
 	}// Constructor
 
-	public ManejadorXML(String nombre, String descripcion, int duracion, File fondo, File dirResultados, Integer id_especialista, ArrayList<Objetos> obj, JKinect j) {
+	public ManejadorXML(String nombre, String descripcion, int duracion, File fondo, Integer id_especialista, ArrayList<Objetos> obj, JKinect j) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
 		this.fondo = fondo;
-		this.dirResultados = dirResultados;
 		this.id_especialista = id_especialista;
 		this.obj = obj;
 	}// Constructor
@@ -74,14 +72,6 @@ public class ManejadorXML {
 
 	public void setFondo(File fondo) {
 		this.fondo = fondo;
-	}
-
-	public File getDirResultados() {
-		return dirResultados;
-	}
-
-	public void setDirResultados(File dirResultados) {
-		this.dirResultados = dirResultados;
 	}
 
 	public Integer getId_especialista() {
@@ -119,8 +109,8 @@ public class ManejadorXML {
 			{
 
 				try{
-					String nuevoDirectorio = getDirResultados().toString() + '/' + getNombre() + '/';
-					System.out.println(nuevoDirectorio);
+//					String nuevoDirectorio = getDirResultados().toString() + '/' + getNombre() + '/';
+//					System.out.println(nuevoDirectorio);
 
 					//Creamos un directorio para dicho fichero de configuracion
 					//File dir = new File(nuevoDirectorio); // crea objeto
@@ -128,7 +118,7 @@ public class ManejadorXML {
 
 					//Abrimos stream --> creamos el fichero si no existe
 					//FileWriter fw = new FileWriter(nuevoDirectorio+getNombre()+".xml");
-					FileWriter fw = new FileWriter(getNombre()+".xml");
+					FileWriter fw = new FileWriter(j.globalXML+getNombre()+".xml");
 					
 					// Escribimos en el fichero el codigo correspondiente a nuestro XML
 					fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -143,8 +133,6 @@ public class ManejadorXML {
 					fw.write("\r\n");
 					fw.write("<fondo>"+getFondo()+"</fondo>");
 					fw.write("\r\n");
-					//fw.write("<directorio_resultados>"+getDirResultados()+'/'+getNombre()+'/'+"</directorio_resultados>");
-					//fw.write("\r\n");
 					fw.write("<especialista>"+getId_especialista()+"</especialista>");
 					fw.write("\r\n");
 					fw.write("<objetos>");
@@ -155,7 +143,7 @@ public class ManejadorXML {
 					{
 						fw.write("<elemento>");
 						fw.write("\r\n");
-						fw.write("<imagen>"+getObj().get(i).getImg()+"</imagen>");
+						fw.write("<imagen>images"+getObj().get(i).getImg().toString().split("/images")[1]+"</imagen>");
 						fw.write("\r\n");
 						fw.write("<tiempo>"+getObj().get(i).getTiempo()+"</tiempo>");
 						fw.write("\r\n");
@@ -233,7 +221,7 @@ public class ManejadorXML {
 
 		//ManejadorXML xml = null;
 		obj = new ArrayList<Objetos>();
-		String directorio = j.globalXML;
+		//String directorio = j.globalXML;
 		//String subDir = fileXML.getName().substring(0, fileXML.getName().length()-4)+"/";
 		
 		
@@ -251,7 +239,7 @@ public class ManejadorXML {
 		BufferedReader br = null;
 		try {
 			//br = new BufferedReader(new FileReader(directorio+subDir+fileXML.getName()));
-			br = new BufferedReader(new FileReader(directorio+fileXML.getName()));
+			br = new BufferedReader(new FileReader(fileXML));
 
 		} catch (FileNotFoundException e2) {
 			e2.printStackTrace();
@@ -288,9 +276,6 @@ public class ManejadorXML {
 				}else if( splittedLine[0].contains("fondo") ){
 					setFondo( new File( splittedLine2[0]) );
 					
-//				}else if( splittedLine[0].contains("directorio_resultados") ){
-//					setDirResultados( new File(splittedLine2[0]) );
-//					
 				}else if( splittedLine[0].contains("especialista") ){
 					setId_especialista(Integer.parseInt(splittedLine2[0]) );
 					
@@ -322,7 +307,7 @@ public class ManejadorXML {
 
 					
 					/// CUANDO ENTRAMOS AQUI TENEMOS TODOS LOS VALORES DE UN NUEVO OBJETO EN NUESTRAS VARIABLES AUXILIARES
-					Objetos o = new Objetos(imgEle.toString().trim().split("/")[6], pEle, tiempoEle, ordenEle, imgEle, cEle);
+					Objetos o = new Objetos(imgEle.toString().trim().split("/")[3], pEle, tiempoEle, ordenEle, imgEle, cEle);
 					obj.add(o);
 					
 					

@@ -3,12 +3,11 @@
 <nombre>prueba_rey_leon_vehiculos</nombre>
 <descripcion>Fichero XML de prueba del rey leon con vehiculos como objetos</descripcion>
 <duracion>30</duracion>
-<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/reyLeon.jpg</fondo>
-<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/prueba_rey_leon_vehiculos/</directorio_resultados>
+<fondo>images/Logos/FONDOS_PANTALLA/reyLeon.jpg</fondo>
 <especialista>1</especialista>
 <objetos>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_VEHICULOS/avion.jpg</imagen>
+<imagen>images/Logos/FOTOS_VEHICULOS/avion.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>1</orden>
 <posicionX>270</posicionX>
@@ -16,7 +15,7 @@
 <color>255,0,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_VEHICULOS/camion.jpg</imagen>
+<imagen>images/Logos/FOTOS_VEHICULOS/camion.jpg</imagen>
 <tiempo>10</tiempo>
 <orden>2</orden>
 <posicionX>557</posicionX>
@@ -24,7 +23,7 @@
 <color>0,0,255</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_VEHICULOS/coche.jpg</imagen>
+<imagen>images/Logos/FOTOS_VEHICULOS/coche.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>3</orden>
 <posicionX>117</posicionX>
@@ -32,7 +31,7 @@
 <color>102,255,102</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_VEHICULOS/tren.jpg</imagen>
+<imagen>images/Logos/FOTOS_VEHICULOS/tren.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>4</orden>
 <posicionX>111</posicionX>
@@ -40,7 +39,7 @@
 <color>51,255,255</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_VEHICULOS/barco.jpg</imagen>
+<imagen>images/Logos/FOTOS_VEHICULOS/barco.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>5</orden>
 <posicionX>372</posicionX>

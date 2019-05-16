@@ -45,7 +45,6 @@ public class VentEspecialistas extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	private JTable tableEspecialistas;
 	private JTable tableAux;
-	BaseDeDatosMySQL db = null;
 
 	/**
 	 * Launch the application.
@@ -55,7 +54,7 @@ public class VentEspecialistas extends JInternalFrame {
 			@Override
 			public void run() {
 				try {
-					VentEspecialistas frame = new VentEspecialistas(null);
+					VentEspecialistas frame = new VentEspecialistas(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,17 +67,15 @@ public class VentEspecialistas extends JInternalFrame {
 	 * Create the frame.
 	 *   
 	 */
-	public VentEspecialistas(JKinect j){
+	public VentEspecialistas(JKinect j, BaseDeDatosMySQL db){
 
 		super("Ventana de Especialistas", true, true, true, true);
-		db = new BaseDeDatosMySQL();
 		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 		addInternalFrameListener(new InternalFrameAdapter() {
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
-				db.finBaseDeDatos();
 				j.espAbierto = false;
 			}
 		});
@@ -163,8 +160,6 @@ public class VentEspecialistas extends JInternalFrame {
 		btnSalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				db.finBaseDeDatos();
-				//j.jframeEsp.dispose();
 				j.espAbierto = false;
 				doDefaultCloseAction();
 			}

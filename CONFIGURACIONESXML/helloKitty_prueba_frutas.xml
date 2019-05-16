@@ -1,75 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <motriKinect>
-<nombre>helloKitty_prueba_frutas</nombre>
-<descripcion>Partida de prueba con frutas como objetos y el fondo de pantalla de hello kitty</descripcion>
-<duracion>45</duracion>
-<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/helloKitty.jpg</fondo>
-<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/helloKitty_prueba_frutas/</directorio_resultados>
-<especialista>1</especialista>
-<objetos>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/naranja.jpg</imagen>
-<tiempo>5</tiempo>
-<orden>1</orden>
-<posicionX>205</posicionX>
-<posicionY>84</posicionY>
-<color>255,153,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
-<tiempo>10</tiempo>
-<orden>2</orden>
-<posicionX>401</posicionX>
-<posicionY>128</posicionY>
-<color>255,0,51</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/coco.jpg</imagen>
-<tiempo>3</tiempo>
-<orden>3</orden>
-<posicionX>626</posicionX>
-<posicionY>91</posicionY>
-<color>102,102,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
-<tiempo>2</tiempo>
-<orden>4</orden>
-<posicionX>89</posicionX>
-<posicionY>383</posicionY>
-<color>51,255,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
-<tiempo>5</tiempo>
-<orden>5</orden>
-<posicionX>85</posicionX>
-<posicionY>10</posicionY>
-<color>51,255,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
-<tiempo>1</tiempo>
-<orden>6</orden>
-<posicionX>722</posicionX>
-<posicionY>338</posicionY>
-<color>255,255,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
-<tiempo>1</tiempo>
-<orden>7</orden>
-<posicionX>475</posicionX>
-<posicionY>412</posicionY>
-<color>255,255,0</color>
-</elemento>
-<elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
-<tiempo>1</tiempo>
-<orden>8</orden>
-<posicionX>392</posicionX>
-<posicionY>416</posicionY>
-<color>255,255,0</color>
-</elemento>
-</objetos>
+	<nombre>helloKitty_prueba_frutas</nombre>
+	<descripcion>Partida de prueba con frutas como objetos y el fondo de pantalla de hello kitty</descripcion>
+	<duracion>45</duracion>
+	<fondo>images/Logos/FONDOS_PANTALLA/helloKitty.jpg</fondo>
+	<especialista>1</especialista>
+	<objetos>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/naranja.jpg</imagen>
+			<tiempo>5</tiempo>
+			<orden>1</orden>
+			<posicionX>205</posicionX>
+			<posicionY>84</posicionY>
+			<color>255,153,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/manzana.jpg</imagen>
+			<tiempo>10</tiempo>
+			<orden>2</orden>
+			<posicionX>401</posicionX>
+			<posicionY>128</posicionY>
+			<color>255,0,51</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/coco.jpg</imagen>
+			<tiempo>3</tiempo>
+			<orden>3</orden>
+			<posicionX>626</posicionX>
+			<posicionY>91</posicionY>
+			<color>102,102,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
+			<tiempo>2</tiempo>
+			<orden>4</orden>
+			<posicionX>89</posicionX>
+			<posicionY>383</posicionY>
+			<color>51,255,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/piña.jpg</imagen>
+			<tiempo>5</tiempo>
+			<orden>5</orden>
+			<posicionX>85</posicionX>
+			<posicionY>10</posicionY>
+			<color>51,255,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
+			<tiempo>1</tiempo>
+			<orden>6</orden>
+			<posicionX>722</posicionX>
+			<posicionY>338</posicionY>
+			<color>255,255,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
+			<tiempo>1</tiempo>
+			<orden>7</orden>
+			<posicionX>475</posicionX>
+			<posicionY>412</posicionY>
+			<color>255,255,0</color>
+		</elemento>
+		<elemento>
+			<imagen>images/Logos/FOTOS_FRUTAS/platano.jpg</imagen>
+			<tiempo>1</tiempo>
+			<orden>8</orden>
+			<posicionX>392</posicionX>
+			<posicionY>416</posicionY>
+			<color>255,255,0</color>
+		</elemento>
+	</objetos>
 </motriKinect>

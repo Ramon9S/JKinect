@@ -14,6 +14,7 @@ public class BaseDeDatosMySQL extends BaseDeDatos {
 	{
 		//super(driverSQL, servidorSQL, puertoSQL, userSQL, passwordSQL, baseDatosSQL);
 		super("jdbc:mysql", "localhost", "3306", "myuser", "ramon_sm", "terapiaKinectInterfaceDB");
+		//super("jdbc:mysql", "150.214.112.168", "3306", "myuser", "ramon_sm", "terapiaKinectInterfaceDB");
 		
 	}//end constructor
 

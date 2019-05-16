@@ -54,7 +54,6 @@ public class VentPacientes extends JInternalFrame {
 	private JTable tableAux;
 	private  MiCanvasPreview canvas = null;
 	private  Image imgPreview = null;
-	BaseDeDatosMySQL db = null;
 
 
 	/**
@@ -65,7 +64,7 @@ public class VentPacientes extends JInternalFrame {
 			@Override
 			public void run() {
 				try {
-					VentPacientes frame = new VentPacientes(null);
+					VentPacientes frame = new VentPacientes(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,19 +76,16 @@ public class VentPacientes extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentPacientes(JKinect j) {
+	public VentPacientes(JKinect j, BaseDeDatosMySQL db) {
 
 		super("Ventana de Pacientes", true, true, true, true);
-		db = new BaseDeDatosMySQL();
 		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		addInternalFrameListener(new InternalFrameAdapter() {
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
-				db.finBaseDeDatos();
 				j.pacAbierto = false;
-				//j.jframePac.dispose();
 			}
 		});
 		setSize(new Dimension(1000, 500));
@@ -141,7 +137,6 @@ public class VentPacientes extends JInternalFrame {
 		btnSalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				db.finBaseDeDatos();
 				j.pacAbierto = false;
 				doDefaultCloseAction();
 				//j.jframePac.dispose();
@@ -175,7 +170,8 @@ public class VentPacientes extends JInternalFrame {
 			public void valueChanged(ListSelectionEvent event) {
 				if (tablePacientes.getSelectedRow() > -1) {
 
-					File fichero = new File("", (String)tablePacientes.getValueAt(tablePacientes.getSelectedRow(), 4));
+					//File fichero = new File("", (String)tablePacientes.getValueAt(tablePacientes.getSelectedRow(), 4));
+					File fichero = new File(((String)tablePacientes.getValueAt(tablePacientes.getSelectedRow(), 4)));
 
 
 					BufferedImage imgb = null;

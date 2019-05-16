@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<motriKinect>
+<nombre>marta_reyLeon</nombre>
+<descripcion>Ultima prueba cambiando generarXML()</descripcion>
+<duracion>30</duracion>
+<fondo>images/Logos/FONDOS_PANTALLA/reyLeon.jpg</fondo>
+<especialista>1</especialista>
+<objetos>
+<elemento>
+<imagen>images/Logos/FOTOS_JUGUETES/caballoMadera.jpg</imagen>
+<tiempo>5</tiempo>
+<orden>1</orden>
+<posicionX>360</posicionX>
+<posicionY>43</posicionY>
+<color>153,153,0</color>
+</elemento>
+</objetos>
+</motriKinect>

@@ -164,7 +164,7 @@ public class DirectRendering extends JInternalFrame {
 			g2.setComposite(AlphaComposite.SrcOver.derive(0.3f));
 			g2.fillRoundRect(10, 10, 100, 80, 32, 32);
 			g2.setComposite(AlphaComposite.SrcOver);
-			g2.setColor(Color.white);
+			g2.setColor(Color.BLACK);
 			g2.setFont(font);
 			g2.drawString("JKinect", 25, 60);
 		}

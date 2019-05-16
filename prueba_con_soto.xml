@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<motriKinect>
+<nombre>prueba_con_soto</nombre>
+<descripcion>Probando rutas relativas en el xml</descripcion>
+<duracion>40</duracion>
+<fondo>/Users/ramonseoane/git/JKinect/InterfazKinect/images/Logos/FONDOS_PANTALLA/minions.jpg</fondo>
+<especialista>1</especialista>
+<objetos>
+<elemento>
+<imagen>/Users/ramonseoane/git/JKinect/InterfazKinect/images/Logos/FOTOS_VEHICULOS/coche.jpg</imagen>
+<tiempo>4</tiempo>
+<orden>1</orden>
+<posicionX>75</posicionX>
+<posicionY>122</posicionY>
+<color>255,0,0</color>
+</elemento>
+<elemento>
+<imagen>/Users/ramonseoane/git/JKinect/InterfazKinect/images/Logos/FOTOS_VEHICULOS/camion.jpg</imagen>
+<tiempo>2</tiempo>
+<orden>2</orden>
+<posicionX>207</posicionX>
+<posicionY>266</posicionY>
+<color>102,102,255</color>
+</elemento>
+</objetos>
+</motriKinect>

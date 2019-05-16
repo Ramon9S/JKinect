@@ -3,12 +3,11 @@
 <nombre>prueba_bob_esponja_herramientas</nombre>
 <descripcion>Prueba con el fondo de pantalla de Bob Esponja y herramientas como objetos</descripcion>
 <duracion>45</duracion>
-<fondo>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FONDOS_PANTALLA/bobEsponja.jpg</fondo>
-<directorio_resultados>/Users/ramonseoane/Desktop/InterfazTFG/ConfiguracionesXML/prueba_bob_esponja_herramientas/</directorio_resultados>
+<fondo>images/Logos/FONDOS_PANTALLA/bobEsponja.jpg</fondo>
 <especialista>1</especialista>
 <objetos>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/martillo.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/martillo.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>1</orden>
 <posicionX>174</posicionX>
@@ -16,7 +15,7 @@
 <color>102,102,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/regla.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/regla.jpg</imagen>
 <tiempo>10</tiempo>
 <orden>2</orden>
 <posicionX>228</posicionX>
@@ -24,7 +23,7 @@
 <color>255,204,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/sierra.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/sierra.jpg</imagen>
 <tiempo>5</tiempo>
 <orden>3</orden>
 <posicionX>142</posicionX>
@@ -32,7 +31,7 @@
 <color>153,153,153</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/brocha.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/brocha.jpg</imagen>
 <tiempo>10</tiempo>
 <orden>4</orden>
 <posicionX>216</posicionX>
@@ -40,7 +39,7 @@
 <color>255,255,0</color>
 </elemento>
 <elemento>
-<imagen>/Users/ramonseoane/Desktop/InterfazTFG/images/Logos/FOTOS_HERRAMIENTAS/lapiz.jpg</imagen>
+<imagen>images/Logos/FOTOS_HERRAMIENTAS/lapiz.jpg</imagen>
 <tiempo>10</tiempo>
 <orden>5</orden>
 <posicionX>150</posicionX>

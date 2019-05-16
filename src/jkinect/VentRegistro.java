@@ -8,12 +8,9 @@ import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -22,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+
+import bbdd.BaseDeDatosMySQL;
 
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
@@ -35,7 +34,7 @@ public class VentRegistro extends JDialog {
 	private static JTextField textFUsuario;
 	private static JPasswordField passwordField;
 	private static VentRegistro dialog = null;
-	public enum TipoUsuario{ ESPECIALISTA, PACIENTE, ADMIN}//enum
+	public enum TipoUsuario{ ESPECIALISTA, PACIENTE, ADMIN, INVITADO}//enum
 
 
 	/**
@@ -43,8 +42,8 @@ public class VentRegistro extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			dialog = new VentRegistro(null);
-			dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			dialog = new VentRegistro(null, null);
+			dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,13 +52,16 @@ public class VentRegistro extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param db 
 	 */
-	public VentRegistro(JKinect j) {
+	public VentRegistro(JKinect j, BaseDeDatosMySQL db) {
+		
 		super(j.jframe, true);
+		
 		setResizable(false);
 		setModal(true);
 		setAlwaysOnTop(false);
-		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		setBounds(500, 200, 450, 300);
 		getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
@@ -124,7 +126,7 @@ public class VentRegistro extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					registrarse(j);
+					registrarse(j, db);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -142,43 +144,40 @@ public class VentRegistro extends JDialog {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				if(j.registrado != true) {
-					JOptionPane optionPane = new JOptionPane("La ventana no se cierra sin registrarse!!");
+					JOptionPane optionPane = new JOptionPane("Va a entrar como invitado sin registrarse!!");
 					optionPane.setIcon(j.getIconoInfo());
 					JDialog dialog = optionPane.createDialog("");
 					dialog.setTitle("Error de Registro");
 					dialog.setAlwaysOnTop(true);
 					dialog.setVisible(true);
+					
+					j.tipoU = JKinect.TipoUsuario.INVITADO;
+					j.usuarioReg = "Invitado";
+					j.idRegistrado = 0;
+					j.registrado = true;
+					
 				}//if
 			}//windowClosing()
 		});
 	}
 
 	@SuppressWarnings("deprecation")
-	public static void registrarse(JKinect j) throws SQLException{
-		Connection conn = null;
-		Statement stmt = null;
-		Statement stmt2 = null;
+	public static void registrarse(JKinect j, BaseDeDatosMySQL db) throws SQLException{
+		
 		ResultSet rset = null;
 		ResultSet rset2 = null;
 		Vector<Object> columnNames = new Vector<Object>();
 
 		try{
-			// Step 1: Allocate a database 'Connection' object
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/terapiaKinectInterfaceDB?useSSL=false", "myuser", "ramon_sm");
-			// MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
-
-			// Step 2: Allocate a 'Statement' object in the Connection
-			stmt = conn.createStatement();
-			stmt2 = conn.createStatement();
-
 			// Step 3: Execute a SQL SELECT query, the query result
 			//  is returned in a 'ResultSet' object.
 			//String strSelect = "select title, price, qty from books";
 			String strSelect = "select usuario, password, id_especialista from especialista";
 			String strSelect2 = "select usuario, password, id_paciente from paciente";
 
-			rset = stmt.executeQuery(strSelect);
-			rset2 = stmt2.executeQuery(strSelect2);
+			rset = db.select(strSelect);
+			rset2 = db.select(strSelect2);
+			
 			ResultSetMetaData md = rset.getMetaData();
 			int columns = md.getColumnCount();
 
@@ -236,7 +235,7 @@ public class VentRegistro extends JDialog {
 					/** COMPROBAMOS SI SE HA REGISTRADO UN USUARIO DE TIPO ESPECIALISTA O EL ADMIN**/
 					
 					//if( (textFUsuario.getText().equals("Admin")) && (passwordField.getPassword().equals("Admin")) )   NO FUNCIONA CON getPassword()
-					if( (textFUsuario.getText().equals("Admin")) && (passwordField.getText().equals("Admin"))  && (j.registrado == false) )
+					if( (j.registrado == false) && (textFUsuario.getText().equals("Admin")) && (passwordField.getText().equals("Admin")) )
 					{
 						j.registrado = true;
 
@@ -248,13 +247,13 @@ public class VentRegistro extends JDialog {
 						dialog10.setVisible(true);
 
 						j.tipoU = JKinect.TipoUsuario.ADMIN;
-						j.idRegistrado = -1111;
+						j.idRegistrado = -1;
 
 						break;
 					}//if
 
 					//if( (textFUsuario.getText().equals(user)) && (passwordField.getPassword().equals(pass)) )   NO FUNCIONA CON getPassword()
-					if( (textFUsuario.getText().equals(user)) && (passwordField.getText().equals(pass)) && (j.registrado == false) )
+					if( !(j.registrado == true) && (textFUsuario.getText().equals(user)) && (passwordField.getText().equals(pass)) )
 					{
 						j.registrado = true;
 
@@ -280,7 +279,7 @@ public class VentRegistro extends JDialog {
 					do{ 
 						String user2 = rset2.getString("usuario");
 						String pass2 = rset2.getString("password");
-						Integer	idRegistrado = Integer.parseInt(rset.getString("id_paciente"));
+						Integer	idRegistrado = Integer.parseInt(rset2.getString("id_paciente"));
 
 						//if( (textFUsuario.getText().equals(user2)) && (passwordField.getPassword().equals(pass2)) )   NO FUNCIONA CON getPassword()
 						if( (textFUsuario.getText().equals(user2)) && (passwordField.getText().equals(pass2)) && (j.registrado == false) )
@@ -322,11 +321,7 @@ public class VentRegistro extends JDialog {
 			ex.printStackTrace();
 		}//Try-Catch
 
-		// Step 5: Close the resources - Done automatically by try-with-resources
-		// Closing
-		rset.close();
-		stmt.close();
-		conn.close();
+
 	}// registrarse()
 
 }//class VentRegistro()
